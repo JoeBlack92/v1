@@ -1,17 +1,28 @@
 package demo.model;
 
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by poo2 on 15/06/2015.
  */
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String surname;
     private Double salary;
+    @Temporal(TemporalType.DATE)
     private Date dateIncorporation;
+
+    public Employee(){
+
+    }
 
     public Employee(Long id, Date dateIncorporation, Double salary, String surname, String name) {
         this.id = id;
